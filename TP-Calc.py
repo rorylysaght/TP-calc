@@ -1,25 +1,27 @@
-# Count how much Toilet Paper
-# Rory MacLysaght
-# Not approved by CDC, FDA or American TP Association ;-)
+# Count how much Toilet Paper you have stockpiled
+# Rory MacLysaght rorylysaght@gmail.com
+#
+# This is a work in progress - there is currently no data validation or sanitization - use at your own risk
+# Not approved by CDC, FDA, USDA or American TP Association
 from os import system
 import textwrap
 # define our clear function
 def clearScreen():
-    system('clear') # NB: If on Windows, change this to: system('cls')
+    system('clear') # NB: If on Windows, change this line to: system('cls')
 
-# Define type for multipurpose Apocalypse calculator
+# Current default type for multipurpose Apocalypse calculator
 freakout = "Coronavirus"
-# How many sheets in average roll of # TEMP (340 or 425)
+# How many sheets in average roll of TP
 numPerRoll = 400
 # How many sheets per wipe
-numPerWipe = 4
+numPerWipe = 10
 # Avg Poops per day
 ppd = 1
 # Persons in household
 numHousehold = 2
 
 # Maybe it's a different emergency, but default to Corona
-currFreakout = input("What is the current crisis? ").title()  or freakout
+currFreakout = input("What is the current crisis? ").title() or freakout
 
 clearScreen()
 
@@ -66,7 +68,7 @@ if daysLeft > 366:
 elif daysLeft > 30:
     strDaysLeft = str(round(daysLeft/30)) + " months and " + str(daysLeft%30)
 else:
-    strDaysLeft = daysLeft
+    strDaysLeft = str(daysLeft)
 
 if daysLeft < 7:
     bioBanner = "%" * 55 + '\n'
@@ -75,8 +77,8 @@ if daysLeft < 7:
     print(bioBanner)
     print("WARNING: You have less than " + str(daysLeft) + " days before reaching")
     print("         catastrophic TP levels.")
-    if wipesPerRoll > 5:
-        print("RECOMMENDATION: Consider immediately reducing your")
+    if wipesPerRoll > 20:
+        print("RECOMMENDATION*: Consider immediately reducing your")
         print("         current " + str(myNumPerWipe) + " sheets used per wipe!" + '\n')
         print("* This has not been approved by the CDC and should")
         print("  not be considered medical advice." + '\n')
@@ -85,7 +87,7 @@ else:
     okBanner += " " * 22 + "DON'T PANIC" + '\n'
     okBanner += "*" * 55 + '\n'
     print(okBanner)
-    print("You can last for " + strDaysLeft + " days." +'\n')
+    print("You can last for about " + strDaysLeft + " days." +'\n')
     if int(numRolls) > 25 and int(myHousehold) < 3:
         hoarderBanner = "BUT SERIOUSLY PEOPLE! "
         hoarderBanner += "You have " + str(numRolls) + " rolls for " + str(myHousehold) + " people. "
@@ -95,10 +97,21 @@ else:
 print("Sources:")
 print("https://www.healthline.com/health/how-many-times-should-you-poop-a-day")
 print("https://www.consumerreports.org/cro/magazine/2015/08/the-dirty-little-secrets-of-toilet-paper")
-
+print('\n')
 
 
 # SOURCES:
 # https://www.consumerreports.org/cro/magazine/2015/08/the-dirty-little-secrets-of-toilet-paper/index.htm
 # https://www.healthline.com/health/how-many-times-should-you-poop-a-day
 #
+# (c)2020 Rory MacLysaght
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# <https://www.gnu.org/licenses/>.
